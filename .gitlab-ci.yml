@@ -1,3 +1,4 @@
+#
 variables:
         IMAGE_NAME: davidgavrilyuk/project-vacations
         IMAGE_TAG: vacations-1.0
