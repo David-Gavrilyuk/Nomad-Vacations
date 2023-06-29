@@ -12,5 +12,5 @@ build_image:
     before_script:
         - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
     script:
-        - docker compose build $IMAGE_NAME:$IMAGE_TAG .
+        - docker compose build .
         - docker push $IMAGE_NAME:$IMAGE_TAG
