@@ -3,7 +3,7 @@ variables:
         IMAGE_NAME: davidgavrilyuk/project-vacations
         IMAGE_TAG: vacations-1.0
 
-build_image:   
+build_image:
   image: docker:20.10.16
   services:
     - docker:20.10.16-dind
@@ -13,6 +13,9 @@ build_image:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
   script:
     - docker-compose build
+    - docker tag project-vacations-database:latest $IMAGE_NAME:project-vacations-database
+    - docker tag project-vacations-backend:latest $IMAGE_NAME:project-vacations-backend
+    - docker tag project-vacations-frontend:latest $IMAGE_NAME:project-vacations-frontend
     - docker push $IMAGE_NAME:project-vacations-database
     - docker push $IMAGE_NAME:project-vacations-backend
     - docker push $IMAGE_NAME:project-vacations-frontend
