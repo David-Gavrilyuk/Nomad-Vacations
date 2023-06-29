@@ -12,5 +12,5 @@ build_image:
     before_script:
         - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
     script:
-        - docker compose build davidgavrilyuk/project-vacations:vacations-1.0 .
+        - docker compose build $IMAGE_NAME:$IMAGE_TAG .
         - docker push $IMAGE_NAME:$IMAGE_TAG
