@@ -13,6 +13,7 @@ build_image:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
   script:
     - docker-compose build
+    - docker images
     - docker tag project-vacations-database:latest $IMAGE_NAME:project-vacations-database
     - docker tag project-vacations-backend:latest $IMAGE_NAME:project-vacations-backend
     - docker tag project-vacations-frontend:latest $IMAGE_NAME:project-vacations-frontend
