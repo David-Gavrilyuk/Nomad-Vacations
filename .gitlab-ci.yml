@@ -14,9 +14,9 @@ build_image:
   script:
     - docker-compose build
     - docker images
-    - docker tag project-vacations-database:latest $IMAGE_NAME:project-vacations-database
-    - docker tag project-vacations-backend:latest $IMAGE_NAME:project-vacations-backend
-    - docker tag project-vacations-frontend:latest $IMAGE_NAME:project-vacations-frontend
-    - docker push $IMAGE_NAME:project-vacations-database
-    - docker push $IMAGE_NAME:project-vacations-backend
-    - docker push $IMAGE_NAME:project-vacations-frontend
+    - docker tag project-vacations_database:latest $IMAGE_NAME:latest-database
+    - docker tag project-vacations_backend:latest $IMAGE_NAME:latest-backend
+    - docker tag project-vacations_frontend:latest $IMAGE_NAME:latest-frontend
+    - docker push $IMAGE_NAME:latest-database
+    - docker push $IMAGE_NAME:latest-backend
+    - docker push $IMAGE_NAME:latest-frontend
