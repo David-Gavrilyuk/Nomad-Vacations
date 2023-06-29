@@ -1,0 +1,93 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  text-align: center;
+  font-family: sans-serif;
+  color: black;
+  background-color: #f7f7f7cc;
+}
+
+h1 {
+  color: #4fc3f7;
+}
+
+a {
+  color: #4fc3f7;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: black;
+}
+
+.Box {
+  display: inline-block;
+  border: 2px solid #4fc3f7;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #eeeeee;
+  min-width: 300px;
+  margin-bottom: 20px;
+}
+
+.coverImage {
+  position: relative;
+  right: 45px;
+  top: 20px;
+  color: rgba(0, 0, 0, 0.619);
+}
+
+.selectImage {
+  height: 110px;
+  width: 205px;
+  border: 1.5px solid grey;
+  border-radius: 5px;
+}
+
+.selectImage:hover {
+  border: 1.5px solid black;
+}
+
+figcaption {
+  position: relative;
+  width: 110px;
+  padding: 3px;
+  top: 70px;
+  left: 90px;
+  border: 1px solid rgba(128, 128, 128, 0.507);
+  background-color: rgba(128, 128, 128, 0.507);
+  color: white;
+  border-radius: 5px;
+}
+
+.errors {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.71);
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+  margin: auto;
+  width: fit-content;
+}
+
+.Description.scrollBar {
+  scrollbar-width: thin;
+  scrollbar-color: #4fc3f7 rgba(128, 128, 128, 0.112);
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(128, 128, 128, 0.112);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #4fc3f7;
+  }
+}

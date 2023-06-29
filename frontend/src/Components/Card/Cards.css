@@ -1,0 +1,63 @@
+.Cards {
+}
+
+.CardOutlined {
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+}
+
+.Destination {
+  color: whitesmoke;
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  bottom: 80px;
+  font-weight: 900;
+}
+
+.Date {
+  background-color: #4fc3f7;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  right: 16px;
+  bottom: 70px;
+  width: 318px;
+  height: 35px;
+  text-align: left;
+  display: flex;
+  padding-top: 5px;
+  padding-left: 14px;
+  font-weight: 600;
+  font-size: small;
+}
+
+.DateIcon {
+  position: relative;
+  margin-right: 5px;
+}
+
+.Description {
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  bottom: 80px;
+  right: 16px;
+  height: 130px;
+  width: 292px;
+  text-align: left;
+  padding: 20px;
+  overflow: auto;
+  overflow-x: hidden;
+  color: rgba(0, 0, 0, 0.785);
+  word-break: break-word;
+}
+
+.PriceButton {
+  width: 250px;
+  bottom: 80px;
+  left: 25px;
+  z-index: 2;
+}

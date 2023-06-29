@@ -1,0 +1,12 @@
+.Main {
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+.filterList {
+  display: flex;
+  justify-content: flex-start;
+}

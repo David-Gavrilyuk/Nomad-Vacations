@@ -1,0 +1,14 @@
+.NavBar {
+}
+
+.navButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 960px) {
+  .navButtons {
+    display: initial;
+    flex-direction: initial;
+  }
+}
