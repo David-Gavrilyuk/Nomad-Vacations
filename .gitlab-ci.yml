@@ -33,6 +33,7 @@ deploy:
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
+        docker ps -aq
         docker ps -aq | xargs docker stop | xargs docker rm &&
         docker run -d -p 3306:3306 $IMAGE_NAME:latest-database &&
         docker run -d -p 4000:4000 $IMAGE_NAME:latest-backend &&
