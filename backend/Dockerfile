@@ -5,7 +5,7 @@ RUN npm i -g ts-node
 
 WORKDIR /app
 
-COPY package.json /app/package.json
+COPY package*.json /app/
 
 RUN npm i
 

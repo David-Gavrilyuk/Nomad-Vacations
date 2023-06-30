@@ -2,10 +2,10 @@ FROM node:18-alpine3.16
 
 WORKDIR /app
 
-COPY package.json /app/package.json
+COPY package*.json /app/
 
-RUN npm i
+
 
 COPY . /app/
-
+RUN npm i
 ENTRYPOINT npm start
