@@ -30,6 +30,7 @@ deploy:
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
+    - export MYSQL_ROOT_PASSWORD="!11A7a3@dg"
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
