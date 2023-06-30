@@ -30,7 +30,7 @@ services:
     restart: unless-stopped
 
     volumes:
-      - ./backend:/app
+      - backend:/app
 
     depends_on:
       - database
@@ -42,10 +42,10 @@ services:
     ports:
       - 3000:3000
 
-    restart: unless-stopped
+    #restart: unless-stopped
 
     volumes:
-      - ./frontend:/app
+      - frontend:/app
 
     depends_on:
       - backend
