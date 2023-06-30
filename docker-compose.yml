@@ -30,7 +30,7 @@ services:
     restart: unless-stopped
 
     volumes:
-      - ./Backend:/app
+      - ./backend:/app
 
     depends_on:
       - database
