@@ -30,12 +30,13 @@ deploy:
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
-    - scp -o StrictHostKeyChecking=no -i $SSH_KEY -r /builds/David-Gavrilyuk/Project-Vacations/* root@206.81.21.198:/root/vacations
-  script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
         docker ps -aq | xargs -r docker stop &&
-        docker ps -aq | xargs -r docker rm &&
+        docker ps -aq | xargs -r docker rm"
+    - scp -o StrictHostKeyChecking=no -i $SSH_KEY -r /builds/David-Gavrilyuk/Project-Vacations/* root@206.81.21.198:/root/vacations
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         cd vacations && 
         docker-compose up -d "
 #        docker network create --driver bridge my-net &&
