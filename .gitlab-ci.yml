@@ -36,8 +36,10 @@ deploy:
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
         docker ps -aq | xargs -r docker stop &&
         docker ps -aq | xargs -r docker rm &&
-        docker network create --driver bridge my-net &&
-        docker run -d -p 3307:3306 --network my-net $IMAGE_NAME:latest-database &&
-        docker run -d -p 4000:4000 --network my-net $IMAGE_NAME:latest-backend &&
-        docker run -d -p 3000:3000 --network my-net $IMAGE_NAME:latest-frontend"
+        scp -r /* root@206.81.21.198:/root/vacations &&
+        cd vacations && docker-compose up -d 
+#        docker network create --driver bridge my-net &&
+#        docker run -d -p 3307:3306 --network my-net $IMAGE_NAME:latest-database &&
+#        docker run -d -p 4000:4000 --network my-net $IMAGE_NAME:latest-backend &&
+#        docker run -d -p 3000:3000 --network my-net $IMAGE_NAME:latest-frontend"
 
