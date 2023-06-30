@@ -30,7 +30,7 @@ deploy:
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
-    - scp -i $SSH_KEY -r /* root@206.81.21.198:/root/vacations
+    - scp -o StrictHostKeyChecking=no -i $SSH_KEY -r /* root@206.81.21.198:/root/vacations
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
