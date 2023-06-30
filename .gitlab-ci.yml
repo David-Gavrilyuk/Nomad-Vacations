@@ -30,14 +30,14 @@ deploy:
   stage: deploy
   before_script:
     - chmod 400 $SSH_KEY
-    - export MYSQL_ROOT_PASSWORD="!11A7a3@dg"
+    - scp -i $SSH_KEY -r /* root@206.81.21.198:/root/vacations
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
         docker ps -aq | xargs -r docker stop &&
         docker ps -aq | xargs -r docker rm &&
-        scp -r /* root@206.81.21.198:/root/vacations &&
-        cd vacations && docker-compose up -d 
+        cd vacations && 
+        docker-compose up -d "
 #        docker network create --driver bridge my-net &&
 #        docker run -d -p 3307:3306 --network my-net $IMAGE_NAME:latest-database &&
 #        docker run -d -p 4000:4000 --network my-net $IMAGE_NAME:latest-backend &&
