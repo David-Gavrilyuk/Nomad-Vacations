@@ -3,9 +3,9 @@ FROM node:18-alpine3.16
 RUN npm i -g nodemon
 RUN npm i -g ts-node
 
-WORKDIR /app/
+WORKDIR /app
 
-COPY package*.json /app/
+COPY package.json /app/package.json
 
 RUN npm i
 
