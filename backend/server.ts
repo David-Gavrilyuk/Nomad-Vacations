@@ -16,19 +16,7 @@ dotenv.config();
 const server = express();
 
 //Cors
-const allowedOrigins = ['http://206.81.21.198:3000']; // Add your IP address here
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-
-server.use(cors(corsOptions));
+server.use(cors({ origin: "*"}));
 
 //Enable file uploading
 server.use(fileUpload());
