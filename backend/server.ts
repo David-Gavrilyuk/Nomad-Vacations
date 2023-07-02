@@ -16,7 +16,7 @@ dotenv.config();
 const server = express();
 
 //Cors
-server.use(cors({ origin: "*"}));
+server.use(cors());
 
 //Enable file uploading
 server.use(fileUpload());
