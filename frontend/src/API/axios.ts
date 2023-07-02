@@ -3,9 +3,9 @@ import { store } from "../Redux/Store";
 import { logout } from "../Redux/UserReducer";
 
 const api = axios.create({
-  baseURL: "http://206.81.21.198:4000",
+  baseURL: "http://localhost:4000",
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
   },
 });
 
