@@ -5,7 +5,7 @@ import { logout } from "../Redux/UserReducer";
 const api = axios.create({
   baseURL: "http://206.81.21.198:4000",
   headers: {
-    "Content-Type": "multipart/form-data",
+    "Content-Type": "application/json",
   },
 });
 

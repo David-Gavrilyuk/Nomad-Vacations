@@ -15,8 +15,12 @@ dotenv.config();
 //Create server
 const server = express();
 
+const allowedOrigins = ["http://206.81.21.198:4000", "http://206.81.21.198:3000"];
+
 //Cors
-server.use(cors());
+server.use(cors({
+  origin: allowedOrigins,
+}));
 
 //Enable file uploading
 server.use(fileUpload());
