@@ -17,7 +17,7 @@ const server = express();
 
 //Cors
 server.use(cors({
-  origin: 'http://206.81.21.198:4000', // Allow requests from this origin
+  origin: "*"
 }));
 
 //Enable file uploading
