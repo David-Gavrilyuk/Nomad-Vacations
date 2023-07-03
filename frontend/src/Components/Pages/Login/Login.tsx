@@ -57,7 +57,7 @@ function Login(): JSX.Element {
       </div>
       <br />
       <div className="Box">
-        ---Login Details---!
+        !---Login Details---!
         <br />
         <br />
         [User] ~ Email: user@user.com ~ Password: user
