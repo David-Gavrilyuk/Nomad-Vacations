@@ -8,7 +8,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { store } from "../../../Redux/Store";
-import { addVacationAction } from "../../../Redux/VacationReducer";
+import { getVacationsAction } from "../../../Redux/VacationReducer";
 import { setSnackNote } from "../../../Redux/SnackBarReducer";
 import FormErrors from "../../../Utils/FormErrors";
 import DisplayErrors from "../../../Utils/DisplayErrors";
