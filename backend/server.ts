@@ -15,7 +15,7 @@ dotenv.config();
 //Create server
 const server = express();
 
-const allowedOrigins = ["http://206.81.21.198:4000", "http://206.81.21.198:3000", "http://localhost:4000", "http://localhost:4000/users/login"];
+const allowedOrigins = ["http://206.81.21.198:4000"];
 
 //Cors
 server.use(cors({
