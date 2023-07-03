@@ -38,7 +38,7 @@ deploy:
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         cd vacations && 
-        docker-compose up -d "
+        docker-compose up -d --build "
 #        docker network create --driver bridge my-net &&
 #        docker run -d -p 3307:3306 --network my-net $IMAGE_NAME:latest-database &&
 #        docker run -d -p 4000:4000 --network my-net $IMAGE_NAME:latest-backend &&
