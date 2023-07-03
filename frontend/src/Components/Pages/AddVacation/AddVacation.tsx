@@ -36,12 +36,21 @@ function AddVacation(): JSX.Element {
       vacationData.image_file = file;
       await api.post("/vacations/addVacation", vacationData);
 
-      store.dispatch(addVacationAction(vacationData));
       store.dispatch(setSnackNote(true, "success", "Vacation Added"));
+
+      const allVacation = await api.get("/vacations/allVacations");
+      const sortedVacations = allVacation.data.sort((a: any, b: any) => new Date(a.start_date).getTime() - new Date(b.start_date).getTime());
+
+      store.dispatch(getVacationsAction(sortedVacations));
+
       navigate("/");
     } catch (error: any) {
-      setError(error.response.data);
-      console.log(error.response);
+      if (error.response && error.response.data) {
+        setError(error.response.data);
+        console.log(error.response.data);
+      } else {
+        navigate("/");
+      }
     }
   };
 

@@ -45,8 +45,13 @@ function EditVacation(): JSX.Element {
       store.dispatch(editVacationAction(vacationData));
       store.dispatch(setSnackNote(true, "success", "Vacation updated"));
       navigate("/");
-    } catch (err: any) {
-      setError(err.response.data);
+    } catch (error: any) {
+      if (error.response && error.response.data) {
+        setError(error.response.data);
+        console.log(error.response.data);
+      } else {
+        navigate("/");
+      }
     }
   };
 
