@@ -8,6 +8,4 @@ RUN npm i
 
 COPY . /app/
 
-run npm run build
-
-# ENTRYPOINT npm start
+ENTRYPOINT npm start
