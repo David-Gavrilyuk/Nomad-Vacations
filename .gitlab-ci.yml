@@ -47,11 +47,13 @@ deploy:
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
         docker ps -aq | xargs -r docker stop &&
         docker ps -aq | xargs -r docker rm"
-    - scp -o StrictHostKeyChecking=no -i $SSH_KEY -r /builds/David-Gavrilyuk/Project-Vacations/frontend/build/* root@206.81.21.198:/var/www/project-vacations.com
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "mkdir -p /var/www/project-vacations.com"
+    - scp -o StrictHostKeyChecking=no -i $SSH_KEY -r frontend/build/* root@206.81.21.198:/var/www/project-vacations.com/
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         cd vacations && 
         docker-compose up -d --build"
+
 
 #        docker network create --driver bridge my-net &&
 #        docker run -d -p 3307:3306 --network my-net $IMAGE_NAME:latest-database &&
