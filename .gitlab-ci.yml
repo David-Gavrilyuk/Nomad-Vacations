@@ -48,11 +48,12 @@ deploy:
         docker ps -aq | xargs -r docker stop &&
         docker ps -aq | xargs -r docker rm"
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "mkdir -p /var/www/project-vacations.com"
-    - scp -o StrictHostKeyChecking=no -i $SSH_KEY -r frontend/build/* root@206.81.21.198:/var/www/project-vacations.com/
+    - scp -o StrictHostKeyChecking=no -i $SSH_KEY -r $CI_PROJECT_DIR/frontend/build/* root@206.81.21.198:/var/www/project-vacations.com/
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         cd vacations && 
         docker-compose up -d --build"
+
 
 
 #        docker network create --driver bridge my-net &&
