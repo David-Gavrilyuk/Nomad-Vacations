@@ -22,7 +22,7 @@ function Cards(props: Vacation): JSX.Element {
     start_date: dayjs(props.start_date).format("DD/MM/YYYY"),
     end_date: dayjs(props.end_date).format("DD/MM/YYYY"),
     price: props.price,
-    image_name: `http://project-vacations.com:4000/vacations/vacation/image/${props.image_name}`,
+    image_name: `https://project-vacations.com:4000/vacations/vacation/image/${props.image_name}`,
   };
 
   return (
