@@ -30,9 +30,9 @@ server.use(express.json());
 server.use(bodyParser.json());
 
 //Routes
-server.use("api/users", router_Users);
-server.use("api/vacations", router_Vacations);
-server.use("api/likes", router_Likes);
+server.use("/api/users", router_Users);
+server.use("/api/vacations", router_Vacations);
+server.use("/api/likes", router_Likes);
 
 //Handle errors
 server.use("*", (request: Request, response: Response, next: NextFunction) => {
