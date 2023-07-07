@@ -32,17 +32,18 @@ deploy:
     - chmod 400 $SSH_KEY
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
-        docker ps -aq | xargs -r docker stop &&
-        docker ps -aq | xargs -r docker rm"
+        if [ \"\$(docker ps -aq)\" ]; then docker stop \$(docker ps -aq); fi &&
+        if [ \"\$(docker ps -aq)\" ]; then docker rm \$(docker ps -aq); fi"
     - scp -o StrictHostKeyChecking=no -i $SSH_KEY -r /builds/David-Gavrilyuk/Project-Vacations/* root@206.81.21.198:/root/vacations
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
-        docker stop $(docker ps -a -q) &&
-        docker rm $(docker ps -a -q) &&
-        docker rmi $(docker images -a -q) &&
+        if [ \"\$(docker ps -aq)\" ]; then docker stop \$(docker ps -aq); fi &&
+        if [ \"\$(docker ps -aq)\" ]; then docker rm \$(docker ps -aq); fi &&
+        if [ \"\$(docker images -aq)\" ]; then docker rmi \$(docker images -aq); fi &&
         docker volume prune -f &&
         cd vacations && 
         docker-compose up -d --build"
+
 
 
 #        docker network create --driver bridge my-net &&
