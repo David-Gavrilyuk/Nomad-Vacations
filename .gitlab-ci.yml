@@ -37,10 +37,10 @@ deploy:
     - scp -o StrictHostKeyChecking=no -i $SSH_KEY -r /builds/David-Gavrilyuk/Project-Vacations/* root@206.81.21.198:/root/vacations
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@206.81.21.198 "
-        docker stop $(docker ps -a -q)
-        docker rm $(docker ps -a -q)
-        docker rmi $(docker images -a -q)
-        docker volume prune -f
+        docker stop $(docker ps -a -q) &&
+        docker rm $(docker ps -a -q) &&
+        docker rmi $(docker images -a -q) &&
+        docker volume prune -f &&
         cd vacations && 
         docker-compose up -d --build"
 
