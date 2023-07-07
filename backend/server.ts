@@ -42,5 +42,5 @@ server.use(ErrorHandler);
 
 //Start the server
 server.listen(process.env.WebPort, () => {
-  console.log(`listinging on https://${process.env.MYSQL_HOST}:${process.env.WebPort}`);
+  console.log(`listinging on http://${process.env.MYSQL_HOST}:${process.env.WebPort}`);
 });

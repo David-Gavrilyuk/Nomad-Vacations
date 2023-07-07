@@ -3,7 +3,7 @@ import { store } from "../Redux/Store";
 import { logout } from "../Redux/UserReducer";
 
 const api = axios.create({
-  baseURL: "https://project-vacations.com:4000",
+  baseURL: "http://project-vacations.com:4000",
   headers: {
     "Content-Type": "multipart/form-data",
   },
