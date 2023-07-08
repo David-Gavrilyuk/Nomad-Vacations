@@ -40,7 +40,7 @@ export class Vacation {
     const dateValidate = new Date().setDate(new Date().getDate() - 1);
 
     const fileValidator = (file: UploadedFile, helpers: Joi.CustomHelpers) => {
-      if (file.size > 5 * 1024 * 1024) {
+      if (file.size > 2 * 1024 * 1024) {
         return helpers.error("any.invalid");
       }
       return file;
@@ -55,7 +55,7 @@ export class Vacation {
       price: Joi.number().required().min(1).max(10000),
       image_name: Joi.string().required().min(4).max(50),
       image_file: Joi.object().required().custom(fileValidator).messages({
-        "any.invalid": "Image file size should not exceed 5MB.",
+        "any.invalid": "Image file size should not exceed 2MB.",
       }),
     });
   }
@@ -63,7 +63,7 @@ export class Vacation {
   private static validatePatchSchema() {
 
     const fileValidator = (file: UploadedFile, helpers: Joi.CustomHelpers) => {
-      if (file.size > 5 * 1024 * 1024) {
+      if (file.size > 2 * 1024 * 1024) {
         return helpers.error("any.invalid");
       }
       return file;
@@ -78,7 +78,7 @@ export class Vacation {
       price: Joi.number().required().min(1).max(10000),
       image_name: Joi.string().required().min(4).max(50),
       image_file: Joi.alternatives().try(Joi.object(), Joi.string()).optional().custom(fileValidator).messages({
-        "any.invalid": "Image file size should not exceed 5MB.",
+        "any.invalid": "Image file size should not exceed 2MB.",
       }),
     });
   }
