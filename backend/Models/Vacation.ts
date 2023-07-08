@@ -39,6 +39,13 @@ export class Vacation {
   private static validatePostSchema() {
     const dateValidate = new Date().setDate(new Date().getDate() - 1);
 
+    const fileValidator = (file: UploadedFile, helpers: Joi.CustomHelpers) => {
+      if (file.size > 5 * 1024 * 1024) {
+        return helpers.error("any.invalid");
+      }
+      return file;
+    };
+
     return Joi.object({
       vacation_id: Joi.forbidden(),
       destination: Joi.string().required().min(2).max(50),
@@ -47,11 +54,21 @@ export class Vacation {
       end_date: Joi.date().min(Joi.ref("start_date")).required(),
       price: Joi.number().required().min(1).max(10000),
       image_name: Joi.string().required().min(4).max(50),
-      image_file: Joi.object().required().max(5 * 1024 * 1024),
+      image_file: Joi.object().required().custom(fileValidator).messages({
+        "any.invalid": "Image file size should not exceed 5MB.",
+      }),
     });
   }
 
   private static validatePatchSchema() {
+
+    const fileValidator = (file: UploadedFile, helpers: Joi.CustomHelpers) => {
+      if (file.size > 5 * 1024 * 1024) {
+        return helpers.error("any.invalid");
+      }
+      return file;
+    };
+    
     return Joi.object({
       vacation_id: Joi.optional(),
       destination: Joi.string().required().min(2).max(50),
@@ -60,7 +77,9 @@ export class Vacation {
       end_date: Joi.date().min(Joi.ref("start_date")).required(),
       price: Joi.number().required().min(1).max(10000),
       image_name: Joi.string().required().min(4).max(50),
-      image_file: Joi.alternatives().try(Joi.object(), Joi.string()).optional().max(5 * 1024 * 1024),
+      image_file: Joi.alternatives().try(Joi.object(), Joi.string()).optional().custom(fileValidator).messages({
+        "any.invalid": "Image file size should not exceed 5MB.",
+      }),
     });
   }
 }
