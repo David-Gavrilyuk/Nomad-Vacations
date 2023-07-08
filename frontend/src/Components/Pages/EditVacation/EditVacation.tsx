@@ -22,7 +22,7 @@ function EditVacation(): JSX.Element {
   const allVacations: Vacation[] = useSelector((state: RootState) => state.VacationsState.allVacations);
 
   const [file, setFile] = useState();
-  const [image, setImage] = useState(`https://project-vacations.com:4000/vacations/vacation/image/${params.image}`);
+  const [image, setImage] = useState(`https://project-vacations.com/api/vacations/vacation/image/${params.image}`);
 
   const [error, setError] = useState(null);
   const errors = FormErrors({ error });
