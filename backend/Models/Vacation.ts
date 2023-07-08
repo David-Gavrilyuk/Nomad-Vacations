@@ -47,7 +47,7 @@ export class Vacation {
       end_date: Joi.date().min(Joi.ref("start_date")).required(),
       price: Joi.number().required().min(1).max(10000),
       image_name: Joi.string().required().min(4).max(50),
-      image_file: Joi.object().required(),
+      image_file: Joi.object().required().max(5 * 1024 * 1024),
     });
   }
 
@@ -60,7 +60,7 @@ export class Vacation {
       end_date: Joi.date().min(Joi.ref("start_date")).required(),
       price: Joi.number().required().min(1).max(10000),
       image_name: Joi.string().required().min(4).max(50),
-      image_file: Joi.alternatives().try(Joi.object(), Joi.string()).optional(),
+      image_file: Joi.alternatives().try(Joi.object(), Joi.string()).optional().max(5 * 1024 * 1024),
     });
   }
 }
