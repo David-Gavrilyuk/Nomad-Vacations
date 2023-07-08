@@ -1,5 +1,6 @@
 import "./AddVacation.css";
 import api from "../../../API/axios";
+import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
@@ -7,6 +8,8 @@ import { Box, Button, Input, TextField } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import SendIcon from "@mui/icons-material/Send";
+import { LoadingButton } from "@mui/lab";
 import { store } from "../../../Redux/Store";
 import { getVacationsAction } from "../../../Redux/VacationReducer";
 import { setSnackNote } from "../../../Redux/SnackBarReducer";
@@ -22,6 +25,7 @@ function AddVacation(): JSX.Element {
   const [file, setFile] = useState();
   const [image, setImage] = useState(defaultImage);
 
+  const [loading, setLoading] = React.useState(false);
   const [error, setError] = useState(null);
   const errors = FormErrors({ error });
 
@@ -33,6 +37,8 @@ function AddVacation(): JSX.Element {
 
   const send = async (vacationData: Vacation) => {
     try {
+      setLoading(true);
+
       vacationData.image_file = file;
       await api.post("/vacations/addVacation", vacationData);
 
@@ -51,6 +57,8 @@ function AddVacation(): JSX.Element {
       } else {
         navigate("/");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -128,9 +136,9 @@ function AddVacation(): JSX.Element {
         <DisplayErrors error={errors.image_file} />
 
         {/* Buttons */}
-        <Button color="primary" variant="contained" type="submit" sx={{ marginTop: "20px", marginBottom: "20px" }}>
-          Add Vacation
-        </Button>
+        <LoadingButton type="submit" loading={loading} endIcon={<SendIcon />} loadingPosition="end" variant="contained" sx={{ marginTop: "20px", marginBottom: "20px" }}>
+          <span>ADD VACATION</span>
+        </LoadingButton>
         <br />
         <Button color="inherit" variant="contained" onClick={() => navigate("/")}>
           Cancel

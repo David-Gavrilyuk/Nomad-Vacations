@@ -1,5 +1,6 @@
 import "./EditVacation.css";
 import api from "../../../API/axios";
+import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -7,6 +8,8 @@ import { useForm, Controller } from "react-hook-form";
 import { Box, Button, Input, TextField } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import SendIcon from "@mui/icons-material/Send";
+import { LoadingButton } from "@mui/lab";
 import { RootState, store } from "../../../Redux/Store";
 import { editVacationAction } from "../../../Redux/VacationReducer";
 import { setSnackNote } from "../../../Redux/SnackBarReducer";
@@ -24,6 +27,7 @@ function EditVacation(): JSX.Element {
   const [file, setFile] = useState();
   const [image, setImage] = useState(`https://project-vacations.com/api/vacations/vacation/image/${params.image}`);
 
+  const [loading, setLoading] = React.useState(false);
   const [error, setError] = useState(null);
   const errors = FormErrors({ error });
 
@@ -37,6 +41,8 @@ function EditVacation(): JSX.Element {
 
   const send = async (vacationData: Vacation) => {
     try {
+      setLoading(true);
+
       const id = params?.id ? +params.id : 0;
       vacationData.image_file = file ? file : params.image;
 
@@ -52,6 +58,8 @@ function EditVacation(): JSX.Element {
       } else {
         navigate("/");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -132,9 +140,9 @@ function EditVacation(): JSX.Element {
         <DisplayErrors error={errors.image_file} />
 
         {/* Buttons */}
-        <Button color="primary" variant="contained" type="submit" sx={{ marginTop: "20px" }}>
-          Edit Vacation
-        </Button>
+        <LoadingButton type="submit" loading={loading} endIcon={<SendIcon />} loadingPosition="end" variant="contained" sx={{ marginTop: "20px" }}>
+          <span>EDIT VACATION</span>
+        </LoadingButton>
         <br />
         <Button color="inherit" variant="contained" onClick={() => navigate("/")} sx={{ marginTop: "20px" }}>
           Cancel
