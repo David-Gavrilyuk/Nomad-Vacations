@@ -15,10 +15,11 @@ const loginUser = async (user: Login) => {
     throw new ErrorModel(401, "Email or password are incorrect");
   }
 
-  const { user_id, first_name, last_name, role } = userExists[0];
-  const token = jwtHelper.getNewToken(userExists);
+  delete userExists[0].password;
 
-  return { user: { user_id, first_name, last_name, role }, token };
+  const token = jwtHelper.getNewToken(userExists[0]);
+
+  return { user: userExists[0], token };
 };
 
 const registerUser = async (newUser: User) => {
