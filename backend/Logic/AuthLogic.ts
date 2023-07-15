@@ -17,7 +17,7 @@ const loginUser = async (user: Login) => {
 
   delete userExists[0].password;
 
-  const token = jwtHelper.getNewToken(userExists[0]);
+  const token = jwtHelper.getNewToken(userExists);
 
   return { user: userExists[0], token };
 };
