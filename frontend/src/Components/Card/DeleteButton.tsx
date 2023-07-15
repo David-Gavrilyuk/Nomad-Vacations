@@ -16,7 +16,6 @@ function DeleteButton({ props }: { props: Vacation }): JSX.Element {
 
   const handleDelete = async (image: string | undefined, id: number) => {
     try {
-      console.log(typeof image);
       await api.delete(`/vacations/vacation/delete/${image}/${id}`);
       store.dispatch(deleteVacationAction(id));
       store.dispatch(setSnackNote(true, "warning", "Vacation Deleted"));
