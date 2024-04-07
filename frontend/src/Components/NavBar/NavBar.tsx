@@ -22,7 +22,7 @@ function NavBar({ currentUser }: { currentUser?: any }): JSX.Element {
               href="/"
               sx={{ fontFamily: "monospace", fontWeight: 700, letterSpacing: ".3rem", display: { xs: "none", sm: "flex" } }}
             >
-              Vacations Project
+              Nomad-Vacations
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
